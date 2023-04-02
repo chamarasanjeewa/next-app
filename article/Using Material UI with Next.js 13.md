@@ -1,6 +1,6 @@
 # Using Material UI with Next.js 13 and Tailwind CSS
 
-Next.js 13 has been officially released to the public on October 25th, 2022. Many new features will make writing Next.js applications simpler. One of these is the introduction of the `app` folder and a new way of defining routes. This change will impact the integration of Material UI with Next.js. This article will present one approach for the integration of Material UI with Nest.js 13. I will present the details of each step and also integrate Tailwind CSS with MUI and Next.js.
+Next.js 13 is officially released to the public on October 25th, 2022. Many new features will make writing Next.js applications simpler. One of these is the introduction of the `app` folder and a new way of defining routes. This change will impact the integration of Material UI with Next.js. This article will present one approach for the integration of Material UI with Nest.js 13. I will present the details of each step and also integrate Tailwind CSS with MUI and Next.js.
 
 ## Prerequisites
 
@@ -18,11 +18,11 @@ The `--typescript` flag is used because we are using Typescript for our sample e
 
 The `--expermiental-app` flag is used here because the `app` folder feature is still experimental at this time. This command creates a new `nextjs13-with-mui-and-tailwindcss` folder for our sample application with the following files and folders:
 
-![Initial Nest.js files and folders](article/2022-10-30-21-51-21.png)
+![Initial Nest.js files and folders](2022-10-30-21-51-21.png)
 
-## Delete the `pages` folder
+## Delete the `page` folder
 
-For our sample exercise, we will not be working with the `pages` folder. So we will delete it.
+For our sample exercise, we will not be working with the `page` folder. So we will delete it.
 
 ## Install Material UI
 
@@ -69,7 +69,7 @@ npm run dev
 
 With your browser pointing to the above URL, you should see the screen looking like below.
 
-![Application render with incorrect font in h1](./article/2022-10-31-19-47-33.png)
+![Application render with incorrect font in h1](2022-10-31-19-47-33.png)
 
 This screen has a few issues. Readers with sharp eyes and familiar with Material Design probably would notice:
 
@@ -138,7 +138,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
 When the above changes are applied correctly, the sample application should respond with the following screen when a browser visits [http://localhost:3000](http://localhost:3000).
 
-![Dark mode screen](./article/2022-10-31-20-06-24.png)
+![Dark mode screen](2022-10-31-20-06-24.png)
 
 Notice the screen is using the `darkTheme` and the Roboto font is being used in all elements.
 
@@ -235,7 +235,7 @@ The final screen with the Tailwind CSS classes now looks like below. The title i
 
 
 
-![Material UI with Tailwind CSS](./article/2022-10-31-21-05-08.png)
+![Material UI with Tailwind CSS](2022-10-31-21-05-08.png)
 
 
 ## Some Final Thoughts
