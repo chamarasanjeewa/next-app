@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "The value of BAZ is: $1"
+echo "The value of BAZ is after: $1"
