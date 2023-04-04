@@ -5,8 +5,8 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const client = new MongoClient(process.env.MONGODB_URI!, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+  //useNewUrlParser: true,
+  // useUnifiedTopology: true,
 });
 
 async function connectToDatabase(): Promise<Db> {
@@ -31,7 +31,7 @@ export default async function handler(
     } else if (req.method === 'POST') {
       const { name } = req.body;
       const result = await db.collection('users').insertOne({ name });
-      res.status(201).json(result.ops[0]);
+      res.status(201)
     } else {
       res.status(405).json({ message: 'Method not allowed' });
     }
