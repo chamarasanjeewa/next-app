@@ -5,7 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'ls'
-                sh './deploy.sh'
+                // sh './deploy.sh'
+                echo 'Testing...'
             }
         }
         stage('Test') {
