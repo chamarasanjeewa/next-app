@@ -1,11 +1,14 @@
 #!/usr/bin/env groovy
 pipeline {
     agent any
+    environment {
+    MY_VAR = "my-value"
+  }
     stages {
         stage('Build') {
             steps {
                 sh 'ls'
-                // sh './deploy.sh'
+                 sh './deploy.sh'
                 echo 'Testing...'
             }
         }
