@@ -8,12 +8,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                withCredentials([
+             withCredentials([
           awsAccessKeyId(credentialsId: 'test-id', variable: 'AWS_ACCESS_KEY_ID'),
           awsSecretAccessKey(credentialsId: 'test-id', variable: 'AWS_SECRET_ACCESS_KEY')
         ]) {
-           sh './deploy.sh  \$AWS_REGION \$AWS_ACCESS_KEY_ID'
-                echo 'Testing... '
+                echo 'Building jenkins script.. .$AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY '
+           sh './deploy.sh  $AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY'
         }
         }
                 
