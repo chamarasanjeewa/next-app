@@ -15,6 +15,7 @@ pipeline {
                     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                 ]]) {
+                     sh 'chmod +x /usr/local/bin/docker-compose'
                      sh 'docker-compose up -d'
                      sh 'bash deploy.sh $AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY'
                 }
