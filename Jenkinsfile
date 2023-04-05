@@ -12,12 +12,9 @@ pipeline {
           awsAccessKeyId(credentialsId: 'test-id', variable: 'AWS_ACCESS_KEY_ID'),
           awsSecretAccessKey(credentialsId: 'test-id', variable: 'AWS_SECRET_ACCESS_KEY')
         ]) {
-          sh """
-            # Use AWS CLI to list S3 buckets
-            aws s3 ls --region \$AWS_REGION
-          """
            sh './deploy.sh  \$AWS_REGION \$AWS_ACCESS_KEY_ID'
                 echo 'Testing... '
+        }
         }
                 
         }
