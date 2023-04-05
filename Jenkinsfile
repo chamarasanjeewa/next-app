@@ -3,14 +3,23 @@ pipeline {
     agent any
     environment {
     MY_VAR = "my-value"
+    AWS_REGION = "us-east-1"
   }
     stages {
         stage('Build') {
             steps {
-                // sh 'ls'
-                 sh './deploy.sh \$MY_VAR'
-                echo 'Testing...'
-            }
+                withCredentials([
+          awsAccessKeyId(credentialsId: 'test-id', variable: 'AWS_ACCESS_KEY_ID'),
+          awsSecretAccessKey(credentialsId: 'test-id', variable: 'AWS_SECRET_ACCESS_KEY')
+        ]) {
+          sh """
+            # Use AWS CLI to list S3 buckets
+            aws s3 ls --region \$AWS_REGION
+          """
+           sh './deploy.sh  \$AWS_REGION \$AWS_ACCESS_KEY_ID'
+                echo 'Testing... '
+        }
+                
         }
         stage('Test') {
             steps {
