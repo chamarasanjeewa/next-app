@@ -6,6 +6,18 @@ pipeline {
     AWS_REGION = "us-east-1"
   }
     stages {
+        stage('hello AWS') {
+            steps {
+              withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    credentialsId: 'test-id',
+                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+                ]]) {
+                    sh 'bash deploy.sh $AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY'
+                }
+            }
+        }
         stage('Build') {
             steps {
         //      withCredentials([
@@ -15,9 +27,9 @@ pipeline {
         //         echo 'Building jenkins script.. .$AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY '
         //    sh './deploy.sh  $AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY'
         // }
-        withCredentials([amazonWebServicesCredentials(credentialsId: 'access-key-id', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+       // withCredentials([amazonWebServicesCredentials(credentialsId: 'access-key-id', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
     // Your pipeline steps that require AWS credentials
-echo 'Building jenkins script.. .$AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY '
+//echo 'Building jenkins script.. .$AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY '
         }
         }
                 
