@@ -4,6 +4,7 @@ pipeline {
     environment {
     MY_VAR = "my-value"
     AWS_REGION = "us-east-1"
+    PATH = "$PATH:/usr/local/bin"
   }
     stages {
         stage('hello AWS') {
@@ -14,11 +15,7 @@ pipeline {
                     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                 ]]) {
-                    // sh '''docker version
-                    // docker info
-                    // docker compose version
-                    // curl --version
-                    // jg --version '''
+                     sh 'docker-compose up -d'
                      sh 'bash deploy.sh $AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY'
                 }
             }

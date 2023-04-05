@@ -1,6 +1,6 @@
 version: "3"
 services:
-  next-app: 
+  next-app:
     build:
       context: .
       dockerfile: Dockerfile
@@ -11,3 +11,4 @@ services:
       - testEnvFromDocker=${AWS_ACCESS_KEY_ID}
     ports:
       - "4000:9070"
+  
