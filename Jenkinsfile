@@ -7,8 +7,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'ls'
-                 sh './deploy.sh'
+                // sh 'ls'
+                 sh './deploy.sh \$MY_VAR'
                 echo 'Testing...'
             }
         }
