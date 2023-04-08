@@ -31,8 +31,10 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'echo ENV ${ENV}' 
-                sh 'echo GIT_BRANCH ${GIT_BRANCH}'
+                scripts{
+                echo "inside main if ${env.GIT_BRANCH}"
+                    echo "inside main if ${env.ENV}"
+                }
 //  withCredentials([[
 //                     $class: 'AmazonWebServicesCredentialsBinding',
 //                     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
