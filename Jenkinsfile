@@ -10,7 +10,7 @@ pipeline {
             steps {
                 script {
                     echo 'inside if else ${env.BRANCH_NAME}'
-                    if (env.GIT_BRANCH == 'origin/master') {
+                    if (env.GIT_BRANCH == 'origin/main') {
                         ENV = "prod"
                     } else if (env.GIT_BRANCH == 'origin/test') {
                         ENV = "qa"
