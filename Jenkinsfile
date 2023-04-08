@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         ENV = "dev"
+        ENVFILE=""
     }
 
     stages {
@@ -20,15 +21,7 @@ pipeline {
                     }
                     def envFile = ".env.${ENV}"
                     println "Environment file: ${envFile}"
-                    if (fileExists(envFile)) {
-sh """
-          # Read the environment file and export variables
-          export $(grep -v '^#' envFile | xargs)
-          # Print the environment variables for debugging
-          env
-        """
-                       
-                    }
+                    ENVFILE=envFile
                 }
             }
           
@@ -39,17 +32,17 @@ sh """
                 echo "inside main if ${env.GIT_BRANCH}"
                     echo "inside main if ${env.ENV}"
                 }
-//  withCredentials([[
-//                     $class: 'AmazonWebServicesCredentialsBinding',
-//                     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-//                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY',
-//                     credentialsId: 'leave-app-s3-bucket-credentials'
-//                 ]]) {
-//                     sh 'echo ${ENVIRONMENT}'
-//                     sh 'echo $AWS_ACCESS_KEY_ID'
-//                     sh 'echo $AWS_SECRET_ACCESS_KEY'
-//                     sh './deploy.sh'
-//                 }
+ withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY',
+                    credentialsId: 'leave-app-s3-bucket-credentials'
+                ]]) {
+                    sh 'echo ${ENVIRONMENT}'
+                    sh 'echo $AWS_ACCESS_KEY_ID'
+                    sh 'echo $AWS_SECRET_ACCESS_KEY'
+                    sh './deploy.sh'
+                }
 
             }
         }
