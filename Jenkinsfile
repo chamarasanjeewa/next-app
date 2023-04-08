@@ -9,12 +9,12 @@ pipeline {
         stage('Load Environment') {
             steps {
                 script {
-                    echo 'inside if else ${GIT_BRANCH}'
-                    if (GIT_BRANCH == 'origin/main') {
+                    echo 'inside if else ${env.GIT_BRANCH}'
+                    if (env.GIT_BRANCH == 'origin/main') {
                         ENV = "prod"
-                    } else if (GIT_BRANCH == 'origin/test') {
+                    } else if (env.GIT_BRANCH == 'origin/test') {
                         ENV = "qa"
-                    } else if (GIT_BRANCH == 'origin/develop') {
+                    } else if (env.GIT_BRANCH == 'origin/develop') {
                         ENV = "dev"
                     }
                     def envFile = "env.${ENV}"
