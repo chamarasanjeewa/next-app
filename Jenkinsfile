@@ -2,13 +2,21 @@
 pipeline {
     agent any
     environment {
-        ENVIRONMENT =((GIT_BRANCH == 'origin/test') ? 'qa' : (GIT_BRANCH == 'origin/master') ? 'production' : 'none')
+        BRANCH_NAME = "${env.BRANCH_NAME}"
+        ENVIRONMENT ="development"
     }
 
     stages {
         stage('Load Environment') {
             steps {
                 script {
+                    if (env.BRANCH_NAME == 'master') {
+                        ENV = "prod"
+                    } else if (env.BRANCH_NAME == 'test') {
+                        ENV = "qa"
+                    } else if (env.BRANCH_NAME == 'develop') {
+                        ENV = "dev"
+                    }
                     def envFile = "env.${ENVIRONMENT}"
                     if (fileExists(envFile)) {
                         envVars = readProperties file: envFile
