@@ -15,14 +15,14 @@ pipeline {
                        ENV = "prod"
                         println "selected environment is: ${ENV}"
                     } else if (env.GIT_BRANCH == 'origin/test') {
-                        env.ENV = "qa"
+                        ENV = "qa"
                     } else if (env.GIT_BRANCH == 'origin/develop') {
-                        env.ENV = "dev"
+                        ENV = "dev"
                     }
                     def envFile = ".env.${ENV}"
                   
-                    env.ENVFILE=envFile
-                    println "selected environment file is: ${env.ENVFILE}"
+                    ENVFILE=envFile
+                    println "selected environment file is: ${ENVFILE}"
                    
                 }
             }
