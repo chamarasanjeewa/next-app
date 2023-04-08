@@ -21,8 +21,8 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'echo ${env.ENVIRONMENT}' 
-                sh 'echo ${env.GIT_BRANCH}'
+                sh 'echo ${ENVIRONMENT}' 
+                sh 'echo ${GIT_BRANCH}'
                  sh 'echo ${ENVIRONMENT}'
 //  withCredentials([[
 //                     $class: 'AmazonWebServicesCredentialsBinding',
