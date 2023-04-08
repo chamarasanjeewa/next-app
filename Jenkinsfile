@@ -82,9 +82,9 @@ pipeline {
                     } else if (env.GIT_BRANCH == 'origin/develop') {
                        env. ENV = "dev"
                     }
-//                     def envFile = ".env.${ENV}"
-//                     env.ENVFILE=envFile
-//                     println "selected environment file is: ${env.ENVFILE}"
+                    def envFile = ".env.${ENV}"
+                    env.ENVFILE=envFile
+                    println "selected environment file is: ${env.ENVFILE}"
                 }
             }
           
