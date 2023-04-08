@@ -12,8 +12,8 @@ pipeline {
                     echo "Current Git branch is ${env.GIT_BRANCH}"
                     if (env.GIT_BRANCH == 'origin/main')  {
                         
-                        env.ENV = "prod"
-                        println "selected environment is: ${env.ENV}"
+                       ENV = "prod"
+                        println "selected environment is: ${ENV}"
                     } else if (env.GIT_BRANCH == 'origin/test') {
                         env.ENV = "qa"
                     } else if (env.GIT_BRANCH == 'origin/develop') {
