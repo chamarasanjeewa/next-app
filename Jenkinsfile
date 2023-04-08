@@ -12,17 +12,17 @@ pipeline {
                     echo "Current Git branch is ${env.GIT_BRANCH}"
                     if (env.GIT_BRANCH == 'origin/main')  {
                         
-                        ENV = "prod"
-                         echo "inside main if ${env.ENV}"
+                        env.ENV = "prod"
+                         echo "inside production environment......${env.ENV}"
                     } else if (env.GIT_BRANCH == 'origin/test') {
-                        ENV = "qa"
+                        env.ENV = "qa"
                     } else if (env.GIT_BRANCH == 'origin/develop') {
-                        ENV = "dev"
+                        env.ENV = "dev"
                     }
                     def envFile = ".env.${ENV}"
                   
-                    ENVFILE=envFile
-                    println "Environment file: ${envFile}"
+                    env.ENVFILE=envFile
+                   
                 }
             }
           
@@ -30,8 +30,8 @@ pipeline {
         stage('Build') {
             steps {
                 script{
-                echo "inside main if ${env.GIT_BRANCH}"
-                    echo "inside main if ${env.ENV}"
+                echo "inside build script..... ${env.GIT_BRANCH}"
+                    echo "environment selected.... ${env.ENV}"
                 }
  withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
