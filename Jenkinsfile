@@ -21,9 +21,9 @@ pipeline {
                     def envFile = ".env.${ENV}"
                     println "Environment file: ${envFile}"
                     if (fileExists(envFile)) {
-                      echo 'file exists...'
+                      println 'file exists...'
                         envVars = readProperties file: envFile
-                      echo '${envVars}'
+                      println '${envVars}'
                         envVars.each { key, value ->
                             env[key] = value
                         }
