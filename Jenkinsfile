@@ -9,7 +9,7 @@ pipeline {
         stage('Load Environment') {
             steps {
                 script {
-                    echo 'inside if else ${env.BRANCH_NAME}'
+                    echo 'inside if else ${env.GIT_BRANCH}'
                     if (env.GIT_BRANCH == 'origin/main') {
                         ENV = "prod"
                     } else if (env.GIT_BRANCH == 'origin/test') {
@@ -26,6 +26,8 @@ pipeline {
                     }
                 }
             }
+            sh 'echo ENV ${ENV}' 
+                sh 'echo GIT_BRANCH ${GIT_BRANCH}'
         }
         stage('Build') {
             steps {
