@@ -1,8 +1,6 @@
 pipeline {
     agent any
     environment {
-        ENV = "dev"
-        ENVFILE=""
     }
 
     stages {
