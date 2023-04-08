@@ -9,6 +9,7 @@ pipeline {
         stage('Load Environment') {
             steps {
                 script {
+                    echo 'inside if else ${env.BRANCH_NAME}'
                     if (env.BRANCH_NAME == 'master') {
                         ENV = "prod"
                     } else if (env.BRANCH_NAME == 'test') {
@@ -30,7 +31,7 @@ pipeline {
             steps {
                 sh 'echo ENV ${ENV}' 
                 sh 'echo GIT_BRANCH ${GIT_BRANCH}'
-                 sh 'echo BRANCH_NAME ${BRANCH_NAME}'
+                 sh 'echo BRANCH_NAME ${env.BRANCH_NAME}'
 //  withCredentials([[
 //                     $class: 'AmazonWebServicesCredentialsBinding',
 //                     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
