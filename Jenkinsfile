@@ -1,4 +1,4 @@
-#!/usr/bin/env groovy
+// #!/usr/bin/env groovy
 // pipeline {
 //     agent any
 //     environment {
@@ -68,7 +68,7 @@
 pipeline {
     agent any
     environment {
-        ENV = ""
+        ENV = ''
     }
     stages {
         stage('Load Environment') {
@@ -77,21 +77,17 @@ pipeline {
                     echo "Current Git branch is ${env.GIT_BRANCH}"
                     if (env.GIT_BRANCH == 'origin/main') {
                         env.ENV = "prod"
-                        echo "inside main if ${env.ENV}"
-                    }
-                    else {
+                    } else {
                         env.ENV = "dev"
-                        echo "inside else ${env.ENV}"
                     }
+                    echo "Current Environment is ${env.ENV}"
                 }
             }
         }
         stage('Build') {
             steps {
-                echo "Current Environment is ${env.ENV}"
-                // rest of the build steps
+                echo "Building for ${env.ENV} environment"
             }
         }
     }
 }
-
