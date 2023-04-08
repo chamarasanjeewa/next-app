@@ -5,4 +5,5 @@ echo "The value of BAZ is after: $1 $2"
 echo "docker version...."
 docker-compose --version
 echo "..................."
+ echo "${ENVFILE}"
 docker-compose -f docker-compose.yml up --build -d
