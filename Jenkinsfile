@@ -11,7 +11,7 @@ pipeline {
                     echo "Current Git branch is ${env.GIT_BRANCH}"
                     if (env.GIT_BRANCH == 'origin/main')  {
                         
-                        ENV = "prod"
+                        ENV = "dev"
                          echo "inside main if ${env.ENV}"
                     } else if (env.GIT_BRANCH == 'origin/test') {
                         ENV = "qa"
@@ -23,7 +23,7 @@ pipeline {
                     if (fileExists(envFile)) {
                       println 'file exists...'
                         envVars = readProperties file: envFile
-                      println '${envVars}'
+//                       println '${envVars}'
                         envVars.each { key, value ->
                             env[key] = value
                         }
