@@ -43,6 +43,10 @@ pipeline {
                     sh 'echo ${ENVIRONMENT}'
                     sh 'echo $AWS_ACCESS_KEY_ID'
                     sh 'echo $AWS_SECRET_ACCESS_KEY'
+      sh '''
+          # Access the value of MY_VAR
+          echo "The value of MY_VAR is: $MY_VAR"
+        '''
                     sh './deploy.sh'
                 }
 
