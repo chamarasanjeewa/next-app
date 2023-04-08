@@ -2,7 +2,7 @@
 pipeline {
     agent any
     environment {
-        ENV = "dev"
+        ENV = "dsfsdfsdfs"
     }
 
     stages {
@@ -11,20 +11,21 @@ pipeline {
                 script {
                     echo "Current Git branch is ${env.GIT_BRANCH}"
                     if (env.GIT_BRANCH == 'origin/main')  {
-                         echo "inside main if ${env.GIT_BRANCH}"
+                        
                         env.ENV = "prod"
+                         echo "inside main if ${env.ENV}"
                     } else if (env.GIT_BRANCH == 'origin/test') {
                         env.ENV = "qa"
                     } else if (env.GIT_BRANCH == 'origin/develop') {
                         env.ENV = "dev"
                     }
-                    def envFile = "env.${ENV}"
-                    if (fileExists(envFile)) {
-                        envVars = readProperties file: envFile
-                        envVars.each { key, value ->
-                            env[key] = value
-                        }
-                    }
+//                     def envFile = "env.${ENV}"
+//                     if (fileExists(envFile)) {
+//                         envVars = readProperties file: envFile
+//                         envVars.each { key, value ->
+//                             env[key] = value
+//                         }
+//                     }
                 }
             }
           
