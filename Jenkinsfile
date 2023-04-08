@@ -31,7 +31,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                scripts{
+                script{
                 echo "inside main if ${env.GIT_BRANCH}"
                     echo "inside main if ${env.ENV}"
                 }
