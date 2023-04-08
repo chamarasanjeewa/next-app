@@ -9,7 +9,7 @@ pipeline {
             steps {
                 script {
                     echo "Current Git branch is ${env.GIT_BRANCH}"
-                    if (env.GIT_BRANCH == 'origin/main')  {
+                    if (env.GIT_BeRANCH == 'origin/main')  {
                         
                         env.ENV = "prod"
                          echo "inside main if ${env.ENV}"
@@ -19,7 +19,7 @@ pipeline {
                         env.ENV = "dev"
                     }
                     def envFile = ".env.${ENV}"
-                    echo '${envFile}'
+                    println "Environment file: ${envFile}"
                     if (fileExists(envFile)) {
                       echo 'file exists...'
                         envVars = readProperties file: envFile
