@@ -12,17 +12,17 @@ pipeline {
                     echo "Current Git branch is ${env.GIT_BRANCH}"
                     if (env.GIT_BRANCH == 'origin/main')  {
                         
-                       ENV = "prod"
+                       env.ENV = "prod"
                         println "selected environment is: ${ENV}"
                     } else if (env.GIT_BRANCH == 'origin/test') {
-                        ENV = "qa"
+                        env.ENV = "qa"
                     } else if (env.GIT_BRANCH == 'origin/develop') {
-                        ENV = "dev"
+                       env. ENV = "dev"
                     }
                     def envFile = ".env.${ENV}"
                   
-                    ENVFILE=envFile
-                    println "selected environment file is: ${ENVFILE}"
+                    env.ENVFILE=envFile
+                    println "selected environment file is: ${env.ENVFILE}"
                    
                 }
             }
@@ -43,10 +43,6 @@ pipeline {
                     sh 'echo ${ENVIRONMENT}'
                     sh 'echo $AWS_ACCESS_KEY_ID'
                     sh 'echo $AWS_SECRET_ACCESS_KEY'
-      sh '''
-          # Access the value of MY_VAR
-          echo "The value of MY_VAR is: $MY_VAR"
-        '''
                     sh './deploy.sh'
                 }
 
