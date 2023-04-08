@@ -79,7 +79,7 @@ pipeline {
                         println "selected environment is: ${ENV}"
                     } else if (env.GIT_BRANCH == 'origin/test') {
                         env.ENV = "qa"
-                    } else //if (env.GIT_BRANCH == 'origin/develop') {
+                    } else if (env.GIT_BRANCH == 'origin/develop') {
                        env. ENV = "dev"
                     }
 //                     def envFile = ".env.${ENV}"
