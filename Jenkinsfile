@@ -2,7 +2,7 @@
 pipeline {
     agent any
     environment {
-        ENVIRONMENT = 'development'
+        ENVIRONMENT =(GIT_BRANCH == 'origin/test') ? 'qa' : (GIT_BRANCH == 'origin/master') ? 'production' : error "Unsupported branch: ${env.GIT_BRANCH}"
     }
 
     stages {
