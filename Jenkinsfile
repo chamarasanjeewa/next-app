@@ -11,11 +11,12 @@ pipeline {
                 script {
                     echo "Current Git branch is ${env.GIT_BRANCH}"
                     if (env.GIT_BRANCH == 'origin/main')  {
-                        ENV = "prod"
+                         echo "inside main if ${env.GIT_BRANCH}"
+                        env.ENV = "prod"
                     } else if (env.GIT_BRANCH == 'origin/test') {
-                        ENV = "qa"
+                        env.ENV = "qa"
                     } else if (env.GIT_BRANCH == 'origin/develop') {
-                        ENV = "dev"
+                        env.ENV = "dev"
                     }
                     def envFile = "env.${ENV}"
                     if (fileExists(envFile)) {
