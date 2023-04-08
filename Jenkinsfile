@@ -2,7 +2,6 @@
 pipeline {
     agent any
     environment {
-        BRANCH_NAME = "${env.BRANCH_NAME}"
         ENV = "dev"
     }
 
