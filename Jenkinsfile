@@ -2,7 +2,7 @@
 pipeline {
     agent any
     environment {
-        ENVIRONMENT =(GIT_BRANCH == 'origin/test') ? 'qa' : (GIT_BRANCH == 'origin/master') ? 'production' : 'none'
+        ENVIRONMENT =((GIT_BRANCH == 'origin/test') ? 'qa' : (GIT_BRANCH == 'origin/master') ? 'production' : 'none')
     }
 
     stages {
