@@ -10,7 +10,7 @@ pipeline {
             steps {
                 script {
                     echo "Current Git branch is ${env.GIT_BRANCH}"
-                    if (env.GIT_BRANCH == 'origin/main') {
+                    if (env.GIT_BRANCH == 'origin/main')  {
                         ENV = "prod"
                     } else if (env.GIT_BRANCH == 'origin/test') {
                         ENV = "qa"
