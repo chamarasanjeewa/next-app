@@ -2,26 +2,41 @@
 pipeline {
     agent any
     environment {
-    MY_VAR = "my-value"
-    AWS_REGION = "us-east-1"
-    PATH = "$PATH:/usr/local/bin"
-  }
+        ENVIRONMENT = 'development'
+    }
+
     stages {
-        stage('hello AWS') {
+        stage('Load Environment') {
             steps {
-              withCredentials([[
-                    $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'test-id',
-                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
-                ]]) {
-                    //  sh 'chmod +x /usr/local/bin/docker-compose'
-                    //  sh 'docker-compose up -d'
-                     sh 'bash deploy.sh $AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY'
+                script {
+                    def envFile = "env.${ENVIRONMENT}"
+                    if (fileExists(envFile)) {
+                        envVars = readProperties file: envFile
+                        envVars.each { key, value ->
+                            env[key] = value
+                        }
+                    }
                 }
             }
         }
-        
+        stage('Build') {
+            steps {
+                 env.ENVIRONMENT = (env.GIT_BRANCH == 'origin/test') ? 'qa' : (env.GIT_BRANCH == 'origin/master') ? 'production' : 'development'
+                
+ withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY',
+                    credentialsId: 'leave-app-s3-bucket-credentials'
+                ]]) {
+                    sh 'echo ${ENVIRONMENT}'
+                    sh 'echo $AWS_ACCESS_KEY_ID'
+                    sh 'echo $AWS_SECRET_ACCESS_KEY'
+                    sh './deploy.sh'
+                }
+
+            }
+        }
         stage('Test') {
             steps {
                 echo 'Testing...'
