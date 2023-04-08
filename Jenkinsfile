@@ -21,8 +21,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                env.ENVIRONMENT = (env.GIT_BRANCH == 'origin/test') ? 'qa' : (env.GIT_BRANCH == 'origin/master') ? 'production' : (env.GIT_BRANCH == 'origin/develop') ? 'develop' : error "Unsupported branch: ${env.GIT_BRANCH}"
-                
+                env.ENVIRONMENT = (env.GIT_BRANCH == 'origin/test') ? 'qa' : (env.GIT_BRANCH == 'origin/master') ? 'production' : (env.GIT_BRANCH == 'origin/develop') ? 'develop' :'develop'
  withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
                     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
