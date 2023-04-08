@@ -68,7 +68,7 @@
 pipeline {
     agent any
     environment {
-        ENV = ''
+        ENV = ""
     }
     stages {
         stage('Load Environment') {
@@ -86,7 +86,8 @@ pipeline {
         }
         stage('Build') {
             steps {
-                echo "Building for ${env.ENV} environment"
+                echo "Building for environment ${env.ENV}"
+                // your build steps here
             }
         }
     }
