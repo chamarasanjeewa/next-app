@@ -9,7 +9,7 @@ pipeline {
             steps {
                 script {
                     echo "Current Git branch is ${env.GIT_BRANCH}"
-                    if (env.GIT_BeRANCH == 'origin/main')  {
+                    if (env.GIT_BRANCH == 'origin/main')  {
                         
                         env.ENV = "prod"
                          echo "inside main if ${env.ENV}"
