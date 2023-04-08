@@ -12,7 +12,7 @@ pipeline {
                     echo "Current Git branch is ${env.GIT_BRANCH}"
                     if (env.GIT_BRANCH == 'origin/main')  {
                         
-                        ENV = "dev"
+                        ENV = "prod"
                          echo "inside main if ${env.ENV}"
                     } else if (env.GIT_BRANCH == 'origin/test') {
                         ENV = "qa"
@@ -20,8 +20,9 @@ pipeline {
                         ENV = "dev"
                     }
                     def envFile = ".env.${ENV}"
-                    println "Environment file: ${envFile}"
+                  
                     ENVFILE=envFile
+                    println "Environment file: ${envFile}"
                 }
             }
           
