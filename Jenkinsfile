@@ -9,7 +9,7 @@ pipeline {
         stage('Load Environment') {
             steps {
                 script {
-                    echo 'inside if else ${env.GIT_BRANCH}'
+                    echo "Current Git branch is ${env.GIT_BRANCH}"
                     if (env.GIT_BRANCH == 'origin/main') {
                         ENV = "prod"
                     } else if (env.GIT_BRANCH == 'origin/test') {
