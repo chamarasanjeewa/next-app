@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                env.ENVIRONMENT = env.GIT_BRANCH
+                echo '${env.ENVIRONMENT}' 
  withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
                     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
