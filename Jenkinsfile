@@ -29,9 +29,9 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'echo ${ENV}' 
-                sh 'echo ${GIT_BRANCH}'
-                 sh 'echo ${BRANCH_NAME}'
+                sh 'echo ENV ${ENV}' 
+                sh 'echo GIT_BRANCH ${GIT_BRANCH}'
+                 sh 'echo BRANCH_NAME ${BRANCH_NAME}'
 //  withCredentials([[
 //                     $class: 'AmazonWebServicesCredentialsBinding',
 //                     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
