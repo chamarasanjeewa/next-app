@@ -3,7 +3,7 @@ pipeline {
     agent any
     environment {
         BRANCH_NAME = "${env.BRANCH_NAME}"
-        ENVIRONMENT ="development"
+        ENV = "dev"
     }
 
     stages {
@@ -17,7 +17,7 @@ pipeline {
                     } else if (env.BRANCH_NAME == 'develop') {
                         ENV = "dev"
                     }
-                    def envFile = "env.${ENVIRONMENT}"
+                    def envFile = "env.${ENV}"
                     if (fileExists(envFile)) {
                         envVars = readProperties file: envFile
                         envVars.each { key, value ->
@@ -29,9 +29,9 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'echo ${ENVIRONMENT}' 
+                sh 'echo ${ENV}' 
                 sh 'echo ${GIT_BRANCH}'
-                 sh 'echo ${ENVIRONMENT}'
+                 sh 'echo ${BRANCH_NAME}'
 //  withCredentials([[
 //                     $class: 'AmazonWebServicesCredentialsBinding',
 //                     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
