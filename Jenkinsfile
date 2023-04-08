@@ -19,6 +19,7 @@ pipeline {
                         env.ENV = "dev"
                     }
                     def envFile = ".env.${ENV}"
+                    echo '${envFile}'
                     if (fileExists(envFile)) {
                       echo 'file exists...'
                         envVars = readProperties file: envFile
