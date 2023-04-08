@@ -10,11 +10,11 @@ pipeline {
             steps {
                 script {
                     echo 'inside if else ${env.BRANCH_NAME}'
-                    if (env.BRANCH_NAME == 'master') {
+                    if (env.GIT_BRANCH == 'origin/master') {
                         ENV = "prod"
-                    } else if (env.BRANCH_NAME == 'test') {
+                    } else if (env.GIT_BRANCH == 'origin/test') {
                         ENV = "qa"
-                    } else if (env.BRANCH_NAME == 'develop') {
+                    } else if (env.GIT_BRANCH == 'origin/develop') {
                         ENV = "dev"
                     }
                     def envFile = "env.${ENV}"
@@ -31,7 +31,6 @@ pipeline {
             steps {
                 sh 'echo ENV ${ENV}' 
                 sh 'echo GIT_BRANCH ${GIT_BRANCH}'
-                 sh 'echo BRANCH_NAME ${env.BRANCH_NAME}'
 //  withCredentials([[
 //                     $class: 'AmazonWebServicesCredentialsBinding',
 //                     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
