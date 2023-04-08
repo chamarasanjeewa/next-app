@@ -73,22 +73,22 @@ pipeline {
             steps {
                 script {
                     echo "Current Git branch is ${env.GIT_BRANCH}"
-                    if (env.GIT_BRANCH == 'origin/main')  {
+//                     if (env.GIT_BRANCH == 'origin/main')  {
                         
-                       env.ENV = "prod"
-                        println "selected environment is: ${ENV}"
-                    } else if (env.GIT_BRANCH == 'origin/test') {
-                        env.ENV = "qa"
-                    } else //if (env.GIT_BRANCH == 'origin/develop') {
-                       env. ENV = "dev"
-                    }
-                    def envFile = ".env.${ENV}"
-                    env.ENVFILE=envFile
-                    println "selected environment file is: ${env.ENVFILE}"
+//                        env.ENV = "prod"
+//                         println "selected environment is: ${ENV}"
+//                     } else if (env.GIT_BRANCH == 'origin/test') {
+//                         env.ENV = "qa"
+//                     } else //if (env.GIT_BRANCH == 'origin/develop') {
+//                        env. ENV = "dev"
+//                     }
+//                     def envFile = ".env.${ENV}"
+//                     env.ENVFILE=envFile
+//                     println "selected environment file is: ${env.ENVFILE}"
                 }
             }
           
-    }}
+    }
         stage('Build') {
             steps {
                 
