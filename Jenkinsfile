@@ -21,12 +21,17 @@ pipeline {
                     def envFile = ".env.${ENV}"
                     println "Environment file: ${envFile}"
                     if (fileExists(envFile)) {
-                      println 'file exists...'
-                        envVars = readProperties file: envFile
-//                       println '${envVars}'
-                        envVars.each { key, value ->
-                            env[key] = value
-                        }
+                      //println 'file exists...'
+//                         envVars = readProperties file: envFile
+// //                       println '${envVars}'
+//                         envVars.each { key, value ->
+//                             env[key] = value
+//                         }
+                        def envProps = new Properties()
+envProps.load(new FileInputStream(envFile))
+envProps.each { key, value ->
+    env."${key}" = "${value}"
+}
                     }
                 }
             }
