@@ -36,7 +36,7 @@ pipeline {
             $class: 'AmazonWebServicesCredentialsBinding',
             accessKeyVariable: 'AWS_ACCESS_KEY_ID',
             secretKeyVariable: 'AWS_SECRET_ACCESS_KEY',
-            credentialsId: 'leave-app-s3-bucket-credentials'
+            credentialsId: 'test-id'
           ]
         ]) {
                     sh 'echo $AWS_ACCESS_KEY_ID'
