@@ -31,7 +31,7 @@ pipeline {
             steps {
                 
   withCredentials([
-          file(credentialsId: 'env-file', variable: 'ENV_FILE'),
+          file(credentialsId: 'env-file', variable: 'FILE_CREDS'),
           [
             $class: 'AmazonWebServicesCredentialsBinding',
             accessKeyVariable: 'AWS_ACCESS_KEY_ID',
