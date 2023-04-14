@@ -1,27 +1,51 @@
-#!/usr/bin/env groovy
+
 pipeline {
     agent any
     environment {
-    MY_VAR = "my-value"
-    AWS_REGION = "us-east-1"
-    PATH = "$PATH:/usr/local/bin"
-  }
+        Test=""
+    }
+
     stages {
-        stage('hello AWS') {
+         stage('Load Environment') {
             steps {
-              withCredentials([[
-                    $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'test-id',
-                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
-                ]]) {
-                    //  sh 'chmod +x /usr/local/bin/docker-compose'
-                    //  sh 'docker-compose up -d'
-                     sh 'bash deploy.sh $AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY'
+                script {
+                    echo "Current Git branch is ${env.GIT_BRANCH}"
+                  echo env.BRANCH_NAME
+                    if (env.GIT_BRANCH == 'origin/main')  {
+                        
+                       env.ENV = "prod"
+                        println "selected environment is: ${ENV}"
+                    } else if (env.GIT_BRANCH == 'origin/test') {
+                        env.ENV = "qa"
+                    } else if (env.GIT_BRANCH == 'origin/develop') {
+                       env. ENV = "dev"
+                    }
+                    def envFile = ".env.${ENV}"
+                    env.ENVFILE=envFile
+                    println "selected environment file is: ${env.ENVFILE}"
                 }
             }
+          
+    }
+        stage('Build') {
+            steps {
+                
+  withCredentials([
+          file(credentialsId: 'env-file', variable: 'FILE_CREDS'),
+          [
+            $class: 'AmazonWebServicesCredentialsBinding',
+            accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+            secretKeyVariable: 'AWS_SECRET_ACCESS_KEY',
+            credentialsId: 'test-id'
+          ]
+        ]) {
+                    sh 'echo $AWS_ACCESS_KEY_ID'
+                    sh 'echo $AWS_SECRET_ACCESS_KEY'
+                    sh './deploy.sh'
+                }
+
+            }
         }
-        
         stage('Test') {
             steps {
                 echo 'Testing...'
