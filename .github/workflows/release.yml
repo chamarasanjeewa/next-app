@@ -18,5 +18,5 @@ jobs:
         run: npm install
       - name: Release
         env:
-          GITHUB_TOKEN: ${{ secrets.SEMANTICSECRET }}
+          GITHUB_TOKEN: ${{ secrets.TESTSECRETAUTOTAGGING }}
         run: npm run release
