@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     branches:
-      - main
+      - feat/conventiaonal
 
 jobs:
   release:
@@ -18,5 +18,5 @@ jobs:
         run: npm install
       - name: Release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TESTSECRETAUTOTAGGING }}
         run: npm run release
