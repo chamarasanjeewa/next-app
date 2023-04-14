@@ -1,4 +1,4 @@
-name: Release
+name: Semantic Release
 
 on:
   push:
@@ -8,21 +8,32 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js 18.x
-        uses: actions/setup-node@v1
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
         with:
           node-version: 18.x
-      - name: Install dependencies
-        run: npm install
-      - name: Semantic release
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Authenticate with Github
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18.x
+        env:
+          GITHUB_TOKEN: ${{ secrets.TESTSECRETAUTOTAGGING }}
+
+      - name: Run Semantic Release
         uses: semantic-release/semantic-release@v17
         with:
-          token: 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
-          # Add contents: write permission to the access token
-          # permissions: contents: write
-      # - name: Release
-      #   env:
-      #     GITHUB_TOKEN: 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
-      #   run: npm run release
+          debug: true # Optional: set debug mode to get more information
+          ci: true # Optional: set CI environment variable to true
+          branch: main # Set the branch to release from
+          dry-run: false # Set dry-run to false to actually perform a release
+          npm-publish: true # Publish to NPM if package.json has "publishConfig" property
+          github-token: ${{ secrets.TESTSECRETAUTOTAGGING }}
