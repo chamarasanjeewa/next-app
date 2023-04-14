@@ -16,7 +16,13 @@ jobs:
           node-version: 18.x
       - name: Install dependencies
         run: npm install
-      - name: Release
-        env:
-          GITHUB_TOKEN: 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
-        run: npm run release
+      - name: Semantic release
+        uses: semantic-release/semantic-release@v17
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # Add contents: write permission to the access token
+          # permissions: contents: write
+      # - name: Release
+      #   env:
+      #     GITHUB_TOKEN: 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
+      #   run: npm run release
