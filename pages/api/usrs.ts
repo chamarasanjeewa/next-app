@@ -3,10 +3,10 @@ import { MongoClient, Db } from 'mongodb';
 import dotenv from 'dotenv';
 
 dotenv.config();
-
+console.log("analyxe vommtisfsdfsdf")
 const client = new MongoClient(process.env.MONGODB_URI!, {
   //useNewUrlParser: true,
-  // useUnifiedTopology: true,
+  // useUnifiedTopology: true     dddd,
 });
 
 async function connectToDatabase(): Promise<Db> {
