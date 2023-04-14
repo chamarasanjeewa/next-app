@@ -19,7 +19,7 @@ jobs:
       - name: Semantic release
         uses: semantic-release/semantic-release@v17
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: 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
           # Add contents: write permission to the access token
           # permissions: contents: write
       # - name: Release
