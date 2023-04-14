@@ -1,4 +1,4 @@
-name: Semantic Release
+name: Release
 
 on:
   push:
@@ -10,30 +10,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout Code
         uses: actions/checkout@v2
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 18.x
+          node-version: '18.x'
 
       - name: Install Dependencies
-        run: npm ci
+        run: npm install
 
-      - name: Authenticate with Github
-        uses: actions/setup-node@v2
-        with:
-          node-version: 18.x
+      - name: Semantic Release
         env:
-          GITHUB_TOKEN: ${{ secrets.TESTSECRETAUTOTAGGING }}
-
-      - name: Run Semantic Release
-        uses: semantic-release/semantic-release@v18
-        with:
-          debug: true # Optional: set debug mode to get more information
-          ci: true # Optional: set CI environment variable to true
-          branch: main # Set the branch to release from
-          dry-run: false # Set dry-run to false to actually perform a release
-          npm-publish: true # Publish to NPM if package.json has "publishConfig" property
-          github-token: ${{ secrets.TESTSECRETAUTOTAGGING }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx semantic-release
