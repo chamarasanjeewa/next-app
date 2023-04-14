@@ -1,9 +1,9 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import { MongoClient, Db } from 'mongodb';
-import dotenv from 'dotenv';
+import { NextApiRequest, NextApiResponse } from "next";
+import { MongoClient, Db } from "mongodb";
+import dotenv from "dotenv";
 
 dotenv.config();
-console.log("analyxe vommtisfsdfsdf")
+console.log("analyxe vommtisfsdfsdf ");
 const client = new MongoClient(process.env.MONGODB_URI!, {
   //useNewUrlParser: true,
   // useUnifiedTopology: true     dddd,
@@ -25,19 +25,19 @@ export default async function handler(
   try {
     const db = await connectToDatabase();
 
-    if (req.method === 'GET') {
-      const users = await db.collection('users').find().toArray();
+    if (req.method === "GET") {
+      const users = await db.collection("users").find().toArray();
       res.status(200).json(users);
-    } else if (req.method === 'POST') {
+    } else if (req.method === "POST") {
       const { name } = req.body;
-      const result = await db.collection('users').insertOne({ name });
-      res.status(201)
+      const result = await db.collection("users").insertOne({ name });
+      res.status(201);
     } else {
-      res.status(405).json({ message: 'Method not allowed' });
+      res.status(405).json({ message: "Method not allowed" });
     }
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: 'Internal server error' });
+    res.status(500).json({ message: "Internal server error" });
   } finally {
     await disconnectFromDatabase();
   }
