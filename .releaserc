@@ -2,8 +2,7 @@
   "branches": [
     "main",
     {
-      "name": "feat/conventiaonal",
-      "prerelease": true
+      "name": "feat/conventiaonal"
     }
   ],
   "plugins": [
