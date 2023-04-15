@@ -3,7 +3,7 @@
     "main",
     {
       "name": "feat/conventiaonal",
-      "range": "^1.0.0"
+      "range": "^0.0.0"
     }
   ],
   "plugins": [
