@@ -1,6 +1,6 @@
 {
   "name": "nextjs13-with-mui-and-tailwindcss",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "scripts": {
     "dev": "PORT=4005 next dev",
