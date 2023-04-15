@@ -2,7 +2,8 @@
   "branches": [
     "main",
     {
-      "name": "feat/conventiaonal"
+      "name": "feat/conventiaonal",
+      "range": "^1.0.0"
     }
   ],
   "plugins": [

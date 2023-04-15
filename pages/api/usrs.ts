@@ -6,7 +6,7 @@ dotenv.config();
 console.log("analyxe vommtisfsdfsdf")
 const client = new MongoClient(process.env.MONGODB_URI!, {
   //useNewUrlParser: true,
-  // useUnifiedTopology: true     dddd dsfsf dsfsfs hhhhjhj  sdfsfafasdfsa fdfsfsfds,
+  // useUnifiedTopology: true     dddd dsfsf dsfsfs hhhhjhj  sddsdsfsfafasdfsa fdfsfsfds,
 });
 
 async function connectToDatabase(): Promise<Db> {
