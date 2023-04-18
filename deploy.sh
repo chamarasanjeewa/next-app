@@ -5,4 +5,4 @@ export exportedFromBash=MY_VAR
 # docker-compose --version
 echo ".......building from............$ENV"
  echo ".....environment variables from file: $FILE_CREDS"
-#docker-compose -f docker-compose.yml --env-file .\$ENVFILE up --build -d
+docker-compose -f docker-compose.yml --env-file .\$ENVFILE up --build -d
