@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/chamarasanjeewa/next-app/compare/v1.0.1...v1.0.2) (2023-04-30)
+
+
+### Bug Fixes
+
+* minor fix ([ea4bc5d](https://github.com/chamarasanjeewa/next-app/commit/ea4bc5dc72598ed3c96c04a8e14314a73c48ed5b))
+
 ## [1.0.1](https://github.com/chamarasanjeewa/next-app/compare/v1.0.0...v1.0.1) (2023-04-15)
 
 
