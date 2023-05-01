@@ -7,6 +7,8 @@ console.log("analyxe vommtisfsdfsdf sdfdfafasfasf ");
 const client = new MongoClient(process.env.MONGODB_URI!, {
   //useNewUrlParser: true,
   // useUnifiedTopology: true modification..... addeed another commit another commit   ,
+  //fix oneJ
+  // fix 2
 });
 
 async function connectToDatabase(): Promise<Db> {
