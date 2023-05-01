@@ -1,3 +1,11 @@
+## [1.0.6](https://github.com/chamarasanjeewa/next-app/compare/v1.0.5...v1.0.6) (2023-05-01)
+
+
+### Bug Fixes
+
+* semantic push1 ([4726d12](https://github.com/chamarasanjeewa/next-app/commit/4726d12bf7668ebf163c2e739ed30c118839c0ba))
+* semantic push2 ([3dda71d](https://github.com/chamarasanjeewa/next-app/commit/3dda71d99389eaf278cb256cd45ea239d2a71a54))
+
 ## [1.0.5](https://github.com/chamarasanjeewa/next-app/compare/v1.0.4...v1.0.5) (2023-05-01)
 
 
