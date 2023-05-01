@@ -1,3 +1,16 @@
+# [1.1.0](https://github.com/chamarasanjeewa/next-app/compare/v1.0.6...v1.1.0) (2023-05-01)
+
+
+### Bug Fixes
+
+* semantic push1 updated ([8dfbbbf](https://github.com/chamarasanjeewa/next-app/commit/8dfbbbf7ca5dbf00d606811dee596d81a8ad0774))
+* semantic push2 updated ([70bae6f](https://github.com/chamarasanjeewa/next-app/commit/70bae6f55a9a6dd7af869d458c2bcd40076fa981))
+
+
+### Features
+
+* first feature to contain 2 bugs and one feature ([978b0c3](https://github.com/chamarasanjeewa/next-app/commit/978b0c3996e9f886b7a9a0175d176271caf54db0))
+
 ## [1.0.6](https://github.com/chamarasanjeewa/next-app/compare/v1.0.5...v1.0.6) (2023-05-01)
 
 
