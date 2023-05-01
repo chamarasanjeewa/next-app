@@ -11,6 +11,7 @@ const client = new MongoClient(process.env.MONGODB_URI!, {
   // fix 2
   // semantic push 1 updated
   // semantic push 2 updated
+  // semantic feature 1
 });
 
 async function connectToDatabase(): Promise<Db> {
