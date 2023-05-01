@@ -10,6 +10,7 @@ const client = new MongoClient(process.env.MONGODB_URI!, {
   //fix oneJ
   // fix 2
   // semantic push 1
+  // semantic push 2
 });
 
 async function connectToDatabase(): Promise<Db> {
