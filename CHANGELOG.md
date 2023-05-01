@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/chamarasanjeewa/next-app/compare/v1.0.3...v1.0.4) (2023-05-01)
+
+
+### Bug Fixes
+
+* another bugfix to see how branching works ([0d5044f](https://github.com/chamarasanjeewa/next-app/commit/0d5044f0fe66ae24a177a3adb7321cd12afe73d2))
+
 ## [1.0.3](https://github.com/chamarasanjeewa/next-app/compare/v1.0.2...v1.0.3) (2023-05-01)
 
 
