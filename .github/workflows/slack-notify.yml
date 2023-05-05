@@ -29,9 +29,15 @@ jobs:
                     "type": "section",
                     "text": {
                       "type": "mrkdwn",
-                      "text": "*Created By:* ${{ github.event.pull_request.user.login}}"
+                      "text": "*Created By:* <${{ github.event.pull_request.user.html_url}}|${{ github.event.pull_request.user.login}}>"
+                    },
+                    "accessory": {
+                      "type": "image",
+                      "image_url": "${{ github.event.pull_request.user.avatar_url}}",
+                      "alt_text": "${{ github.event.pull_request.user.login}}"
                     }
-                  },
+                  }
+                  
                   {
                     "type": "section",
                     "text": {
