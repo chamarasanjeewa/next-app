@@ -22,7 +22,7 @@ jobs:
                     "type": "section",
                     "text": {
                       "type": "mrkdwn",
-                      "text": "PR_link: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+                      "text": "PR_link: ${{ github.event.pull_request.html_url || github.event.head_commit.url }} by  by ${{ github.event.pull_request.user.login}}"
                     }
                   }
                 ]
