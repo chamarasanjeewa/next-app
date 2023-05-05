@@ -1,17 +1,18 @@
-name: Send Slack message on PR
+name: Notify Slack on Pull Request
 
 on:
   pull_request:
     types: [opened, reopened, synchronize]
 
 jobs:
-  send_slack_message:
+  slack-notification:
     runs-on: ubuntu-latest
     steps:
-
-      - name: Send Slack message
-        uses: rtCamp/action-slack-notify@v2.2.0
+      - name: Send message to Slack
+        uses: mpeterv/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          text: "New pull request opened: ${{ github.event.pull_request.title }}"
+          fields: repo,message
         env:
-          SLACK_WEBHOOK: https://hooks.slack.com/services/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
-          SLACK_CHANNEL: 'general'
-          SLACK_MESSAGE: 'New Pull Request opened: ${{ github.event.pull_request.html_url }}'
+          SLACK_WEBHOOK_URL: ${{secrets.SLACK_WEBHOOK}}
