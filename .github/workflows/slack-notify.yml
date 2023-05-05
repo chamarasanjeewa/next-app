@@ -43,7 +43,7 @@ jobs:
                     "type": "section",
                     "text": {
                       "type": "mrkdwn",
-                      "text": "*Commit ID:* <${{ github.event.pull_request.head.sha}}>"
+                      "text": "*Commit ID:* <${{ github.event.pull_request.head.repo.html_url}}/commit/${{ github.event.pull_request.head.sha}}|${{ github.event.pull_request.head.sha}}>"
                     }
                   },
                   {
