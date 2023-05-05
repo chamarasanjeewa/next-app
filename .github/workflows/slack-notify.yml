@@ -16,8 +16,14 @@ jobs:
         with:
           payload: |
             {
-                "text": "PR: ${{ github.event.pull_request.title}} by ${{ github.event.pull_request.user.login}}",
                 "blocks": [
+                  {
+                    "type": "section",
+                    "text": {
+                      "type": "mrkdwn",
+                      "text": "PR: ${{ github.event.pull_request.title}} by ${{ github.event.pull_request.user.login}}",
+                    }
+                  },
                   {
                     "type": "section",
                     "text": {
