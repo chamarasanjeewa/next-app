@@ -10,20 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Send slack message on pr
+      - name: Send custom JSON data to Slack workflow
         id: slack
         uses: slackapi/slack-github-action@v1.23.0
         with:
           payload: |
             {
+                "text": "PR: ${{ github.event.pull_request.title}} by ${{ github.event.pull_request.user.login}}",
                 "blocks": [
-                  {
-                    "type": "section",
-                    "text": {
-                      "type": "mrkdwn",
-                      "text": "PR: ${{ github.event.pull_request.title}} by ${{ github.event.pull_request.user.login}}",
-                    }
-                  },
                   {
                     "type": "section",
                     "text": {
