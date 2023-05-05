@@ -5,13 +5,12 @@ on:
     types: [opened, reopened, synchronize]
 
 jobs:
-  slack-notification:
+  slackNotification:
+    name: Slack Notification
     runs-on: ubuntu-latest
     steps:
-        - uses: 8398a7/action-slack@v3
-          with:
-            status: ${{ job.status }}
-            fields: repo,message,commit,author,action,eventName,ref,workflow,job,took,pullRequest # selectable (default: repo,message)
-          env:
-            SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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 # required
-          if: always() # Pick up events even if the job fails or is canceled.
+      - uses: actions/checkout@v2
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
