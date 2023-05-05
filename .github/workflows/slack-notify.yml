@@ -34,7 +34,7 @@ jobs:
                     "accessory": {
                       "type": "image",
                       "image_url": "${{ github.event.pull_request.user.avatar_url}}",
-                      "alt_text": "${{ github.event.pull_request.user.login}}"
+                      "alt_text": "${{ github.event.pull_request.user.login}}",
                       "style": "rounded",
                       "size": "sm"
                     }
