@@ -76,15 +76,16 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*Link:* <${{ github.event.pull_request.html_url}}|${{ github.event.pull_request.title}}>"
+                    "text": "*Merged By:* <${{ github.event.pull_request.user.html_url}}|${{ github.event.pull_request.user.login}}>"
                   }
                 },
                 {
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*Merged By:* <${{ github.event.pull_request.user.html_url}}|${{ github.event.pull_request.user.login}}>"
+                    "text": "*Link:* <${{ github.event.pull_request.html_url}}|${{ github.event.pull_request.title}}>"
                   }
                 }
+                
                 ]
               }
