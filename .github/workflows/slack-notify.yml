@@ -1,18 +1,16 @@
 name: Notify Slack on Pull Request
 
 on:
-  
   pull_request:
-    types: [opened, reopened]
-  workflow_dispatch:
+    types: [opened, reopened, synchronize]
 
 jobs:
   slackNotification:
-    name: Slack Notification on pr
+    name: Slack Notification
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Send pr related info to slack leave-app-frontend channel
+      - name: Send custom JSON data to Slack workflow
         id: slack
         uses: slackapi/slack-github-action@v1.23.0
         with:
@@ -37,6 +35,7 @@ jobs:
                       "type": "image",
                       "image_url": "${{ github.event.pull_request.user.avatar_url}}",
                       "alt_text": "${{ github.event.pull_request.user.login }}",
+                      "size": "sm"
                     }
                   },
                   {
