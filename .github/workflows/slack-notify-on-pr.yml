@@ -34,10 +34,6 @@ jobs:
                     "text": {
                       "type": "mrkdwn",
                       "text": "*Created By:* <${{ github.event.pull_request.user.html_url}}|${{ github.event.pull_request.user.login}}>"
-                    },
-                    "accessory": {
-                      "type": "image",
-                      "alt_text": "${{ github.event.pull_request.user.login}}"
                     }
                   },
                   {
@@ -53,19 +49,6 @@ jobs:
                       "type": "mrkdwn",
                       "text": "*Commit ID:* <${{ github.event.pull_request.head.repo.html_url}}/commit/${{ github.event.pull_request.head.sha}}|${{ github.event.pull_request.head.sha}}>"
                     }
-                  },
-                  {
-                    "type": "actions",
-                    "elements": [
-                      {
-                        "type": "button",
-                        "text": {
-                          "type": "plain_text",
-                          "text": "View Pull Request"
-                        },
-                        "url": "${{ github.event.pull_request.html_url}}"
-                      }
-                    ]
                   }
                 ]
               }
@@ -95,5 +78,6 @@ jobs:
                     "type": "mrkdwn",
                     "text": "*Merged By:* <${{ github.event.pull_request.user.html_url}}|${{ github.event.pull_request.user.login}}>"
                   }
-                }]
+                }
+                ]
               }
