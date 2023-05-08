@@ -2,16 +2,17 @@ name: Notify Slack on creating Pull Request
 
 on:
   pull_request:
-    types: [opened, reopened, synchronize]
+    types: [opened, closed]
 
 env:
   SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
   SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
 
 jobs:
-  slackNotification:
+  slackNotificationOnPr:
     name: Slack Notification
     runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.event.action == 'opened'
     steps:
       - name: Send custom JSON data to Slack workflow
         id: slack
@@ -68,4 +69,37 @@ jobs:
                     ]
                   }
                 ]
+              }
+  slackNotificationOnMerge:
+    name: Slack Notification on merge
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged
+    steps:
+      - name: Send slack notification on merge
+        id: slackNotificationOnMerge
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          payload: |
+            {
+              "text": "PR merged: ${{ github.event.pull_request.title}}",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "New pull request merged"
+                  }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Merged By:* <${{ github.event.pull_request.user.html_url}}|${{ github.event.pull_request.user.login}}>"
+                  },
+                  "accessory": {
+                    "type": "image",
+                    "image_url": "${{ github.event.pull_request.user.avatar_url}}",
+                    "alt_text": "${{ github.event.pull_request.user.login}}"
+                  }
+                }]
               }
