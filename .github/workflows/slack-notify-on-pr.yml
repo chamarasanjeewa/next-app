@@ -40,7 +40,14 @@ jobs:
                     "type": "section",
                     "text": {
                       "type": "mrkdwn",
-                      "text": "*Link:* <${{ github.event.pull_request.html_url}}|${{ github.event.pull_request.title}}>| <${{ github.event.pull_request.head.repo.html_url}}/commit/${{ github.event.pull_request.head.sha}}|${{ github.event.pull_request.head.sha}}>"
+                      "text": "*Link:* <${{ github.event.pull_request.html_url}}|${{ github.event.pull_request.title}}>"
+                    }
+                  },
+                  {
+                    "type": "section",
+                    "text": {
+                      "type": "mrkdwn",
+                      "text": "*Commit:* <${{ github.event.pull_request.head.repo.html_url}}/commit/${{ github.event.pull_request.head.sha}}|${{ github.event.pull_request.head.sha}}>"
                     }
                   }
                 ]
