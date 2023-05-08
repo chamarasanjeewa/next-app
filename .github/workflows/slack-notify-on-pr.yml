@@ -95,6 +95,6 @@ jobs:
                   "text": {
                     "type": "mrkdwn",
                     "text": "*Merged By:* <${{ github.event.pull_request.user.html_url}}|${{ github.event.pull_request.user.login}}>"
-                  },
+                  }
                 }]
               }
