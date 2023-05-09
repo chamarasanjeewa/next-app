@@ -10,7 +10,7 @@ env:
 
 jobs:
   slackNotificationOnPr:
-    name: Slack Notification
+    name: Slack Notification on pr
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request' && github.event.action == 'opened'
     steps:
