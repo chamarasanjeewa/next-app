@@ -8,6 +8,7 @@ const client = new MongoClient(process.env.MONGODB_URI!, {
   //useNewUrlParser: true,
   // useUnifiedTopology: true modification..... addeed another commit another commit   ,
 // first release
+// second release
 });
 
 async function connectToDatabase(): Promise<Db> {
