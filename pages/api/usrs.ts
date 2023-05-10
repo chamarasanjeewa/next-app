@@ -20,6 +20,7 @@ const client = new MongoClient(process.env.MONGODB_URI!, {
 // release 11
 // release 12
 // release 14
+// release 15
 });
 
 async function connectToDatabase(): Promise<Db> {
