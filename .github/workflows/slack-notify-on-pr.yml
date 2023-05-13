@@ -1,91 +1,91 @@
-name: Notify Slack on creating Pull Request
+# name: Notify Slack on creating Pull Request
 
-on:
-  pull_request:
-    types: [opened, closed]
+# on:
+#   pull_request:
+#     types: [opened, closed]
 
-env:
-  SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-  SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+# env:
+#   SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+#   SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
 
-jobs:
-  slackNotificationOnPr:
-    name: Slack Notification on pr
-    runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request' && github.event.action == 'opened'
-    steps:
-      - name: Send slack message on leave-app-frontend on pr
-        id: slack
-        uses: slackapi/slack-github-action@v1.23.0
-        with:
-          payload: |
-            {
-                "text": "PR: ${{ github.event.pull_request.title}} by ${{ github.event.pull_request.user.login}}",
-                "blocks": [
-                  {
-                    "type": "section",
-                    "text": {
-                      "type": "mrkdwn",
-                      "text": "New pull request opened"
-                    }
-                  },
-                  {
-                    "type": "section",
-                    "text": {
-                      "type": "mrkdwn",
-                      "text": "*Created By:* <${{ github.event.pull_request.user.html_url}}|${{ github.event.pull_request.user.login}}>"
-                    }
-                  },
-                  {
-                    "type": "section",
-                    "text": {
-                      "type": "mrkdwn",
-                      "text": "*Link:* <${{ github.event.pull_request.html_url}}|${{ github.event.pull_request.title}}>"
-                    }
-                  },
-                  {
-                    "type": "section",
-                    "text": {
-                      "type": "mrkdwn",
-                      "text": "*Commit:* <${{ github.event.pull_request.head.repo.html_url}}/commit/${{ github.event.pull_request.head.sha}}|${{ github.event.pull_request.head.sha}}>"
-                    }
-                  }
-                ]
-              }
-  slackNotificationOnMerge:
-    name: Slack Notification on merge
-    runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged
-    steps:
-      - name: Send slack notification on merge
-        id: slackNotificationOnMerge
-        uses: slackapi/slack-github-action@v1.23.0
-        with:
-          payload: |
-            {
-              "text": "PR merged: ${{ github.event.pull_request.title}}",
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "Pull request merged"
-                  }
-                },
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "*Merged By:* <${{ github.event.pull_request.user.html_url}}|${{ github.event.pull_request.user.login}}>"
-                  }
-                },
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "*Link:* <${{ github.event.pull_request.html_url}}|${{ github.event.pull_request.title}}>"
-                  }
-                }
+# jobs:
+#   slackNotificationOnPr:
+#     name: Slack Notification on pr
+#     runs-on: ubuntu-latest
+#     if: github.event_name == 'pull_request' && github.event.action == 'opened'
+#     steps:
+#       - name: Send slack message on leave-app-frontend on pr
+#         id: slack
+#         uses: slackapi/slack-github-action@v1.23.0
+#         with:
+#           payload: |
+#             {
+#                 "text": "PR: ${{ github.event.pull_request.title}} by ${{ github.event.pull_request.user.login}}",
+#                 "blocks": [
+#                   {
+#                     "type": "section",
+#                     "text": {
+#                       "type": "mrkdwn",
+#                       "text": "New pull request opened"
+#                     }
+#                   },
+#                   {
+#                     "type": "section",
+#                     "text": {
+#                       "type": "mrkdwn",
+#                       "text": "*Created By:* <${{ github.event.pull_request.user.html_url}}|${{ github.event.pull_request.user.login}}>"
+#                     }
+#                   },
+#                   {
+#                     "type": "section",
+#                     "text": {
+#                       "type": "mrkdwn",
+#                       "text": "*Link:* <${{ github.event.pull_request.html_url}}|${{ github.event.pull_request.title}}>"
+#                     }
+#                   },
+#                   {
+#                     "type": "section",
+#                     "text": {
+#                       "type": "mrkdwn",
+#                       "text": "*Commit:* <${{ github.event.pull_request.head.repo.html_url}}/commit/${{ github.event.pull_request.head.sha}}|${{ github.event.pull_request.head.sha}}>"
+#                     }
+#                   }
+#                 ]
+#               }
+#   slackNotificationOnMerge:
+#     name: Slack Notification on merge
+#     runs-on: ubuntu-latest
+#     if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged
+#     steps:
+#       - name: Send slack notification on merge
+#         id: slackNotificationOnMerge
+#         uses: slackapi/slack-github-action@v1.23.0
+#         with:
+#           payload: |
+#             {
+#               "text": "PR merged: ${{ github.event.pull_request.title}}",
+#               "blocks": [
+#                 {
+#                   "type": "section",
+#                   "text": {
+#                     "type": "mrkdwn",
+#                     "text": "Pull request merged"
+#                   }
+#                 },
+#                 {
+#                   "type": "section",
+#                   "text": {
+#                     "type": "mrkdwn",
+#                     "text": "*Merged By:* <${{ github.event.pull_request.user.html_url}}|${{ github.event.pull_request.user.login}}>"
+#                   }
+#                 },
+#                 {
+#                   "type": "section",
+#                   "text": {
+#                     "type": "mrkdwn",
+#                     "text": "*Link:* <${{ github.event.pull_request.html_url}}|${{ github.event.pull_request.title}}>"
+#                   }
+#                 }
                 
-                ]
-              }
+#                 ]
+#               }

@@ -7,26 +7,7 @@ console.log("analyxe vommtisfsdfsdf sdfdfafasfasf ");
 const client = new MongoClient(process.env.MONGODB_URI!, {
   //useNewUrlParser: true,
   // useUnifiedTopology: true modification..... addeed another commit another commit   ,
-// first release
-// second release
-// third release
-//release 4
-// release 5
-//release 6
-//release 7
-//release 8
-// release 9
-// release 10
-// release 11
-// release 12
-// release 14
-// release 15
-// release 16
-// release 17
-// release 18
-// release 19
-// feature 1
-// feature 1:fix1
+// fix1
 
 });
 
