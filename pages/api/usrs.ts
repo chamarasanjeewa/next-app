@@ -18,6 +18,7 @@ const client = new MongoClient(process.env.MONGODB_URI!, {
 // fix 8
 //fix 9
 //fix 10
+//fix minor
 
 });
 
