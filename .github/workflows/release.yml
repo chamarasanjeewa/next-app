@@ -1,12 +1,13 @@
 name: Release
 
 on:
-  workflow_dispatch:
+  
   push:
     branches:
       - main
       - test
       - develop
+  workflow_dispatch:
 
 jobs:
   release:
