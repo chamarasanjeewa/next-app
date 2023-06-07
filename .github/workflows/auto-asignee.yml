@@ -1,26 +1,13 @@
-name: Auto Assignee
+name: 'Auto Author Assign'
 
 on:
-  pull_request:
-    types:
-      - opened
+  pull_request_target:
+    types: [opened, reopened]
 
 jobs:
-  auto_assignee:
+  assign-author:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Check out code
-        uses: actions/checkout@v2
-
-      - name: Set Assignee
-        run: echo "assignee=$(echo ${{ github.event.pull_request.user.login }})" >> $GITHUB_ENV
-
-      - name: Update Assignee
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git checkout ${{ github.head_ref }}
-          sed -i "s/assignee:.*/assignee: \${assignee}/" PR.yml
-          git commit -am "Update assignee"
-          git push origin ${{ github.head_ref }}
+      - uses: toshimaru/auto-author-assign@v1.1.0
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"

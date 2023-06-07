@@ -7,21 +7,8 @@ console.log("analyxe vommtisfsdfsdf sdfdfafasfasf ");
 const client = new MongoClient(process.env.MONGODB_URI!, {
   //useNewUrlParser: true,
   // useUnifiedTopology: true modification..... addeed another commit another commit   ,
-// fix1
-// fix2
-// fix 1 from fix
-//fix3
-// fix4
-//fix 5
-//fix 6
-// fix 7
-// fix 8
-//fix 9
-//fix 10
-//fix minor
-//fix again
-//fix again
-//fix on test
+// auto asignee
+
 
 
 });
