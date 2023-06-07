@@ -1,0 +1,24 @@
+name: Auto Assignee
+
+on:
+  pull_request:
+    types:
+      - opened
+
+jobs:
+  auto_assignee:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set Assignee
+        run: echo "assignee=$(echo ${{ github.event.pull_request.user.login }})" >> $GITHUB_ENV
+
+      - name: Update Assignee
+        uses: peter-evans/update-branch-action@v2
+        with:
+          commit-message: 'Update assignee'
+          branch: ${{ github.head_ref }}
+          files: 'PR.yml'
